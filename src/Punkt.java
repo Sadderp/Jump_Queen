@@ -16,10 +16,10 @@ public class Punkt {
     public void setY(float y) {
         this.y = y;
     }
-    public void relY(float y) {
+    public void relflyttaY(float y) {
         this.y += y;
     }
-    public void relX(float x) {
+    public void relflyttaX(float x) {
         this.x += x;
     }
 

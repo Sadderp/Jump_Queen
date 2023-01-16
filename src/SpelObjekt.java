@@ -12,7 +12,6 @@ public abstract class SpelObjekt {
     Punkt position = new Punkt(0, 0);
     Fyrkant hitbox = new Fyrkant(new Punkt(0,0), 100, 100);
 
-
     public Punkt getPosition() {
         return position;
     }

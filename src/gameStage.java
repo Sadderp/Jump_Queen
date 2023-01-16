@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,25 +13,22 @@ public class gameStage extends Canvas implements MouseListener, KeyListener {
     ArrayList <SpelObjekt> lista = null;
     public gameStage() {
         lista = new ArrayList<SpelObjekt>();
-        gubbe = new Spelare("par.jpg",new Punkt(100,100),new Fyrkant(new Punkt(100,100),300,300));
+        gubbe = new Spelare("mario.png",new Punkt(100,100),new Fyrkant(new Punkt(100,100),300,300));
         MusGubbe = new MusSpelare("par.jpg",new Punkt(100,100),new Fyrkant(new Punkt(100,100),300,300));
-        FastObjekt = new FastObjekt("par.jpg",new Punkt(100,100),new Fyrkant(new Punkt(100,100),300,300));
+        FastObjekt = new FastObjekt("tegel.png",new Punkt(500,800),new Fyrkant(new Punkt(100,100),300,300));
         lista.add(gubbe);
         lista.add(MusGubbe);
         lista.add(FastObjekt);
         // Lägg till ytterligare objekt!
         addMouseListener(this);
         addKeyListener(this);
-        setBackground(Color.RED);
+        setBackground(Color.GREEN);
         setSize(400,400);
     }
-
     @Override
     public void paint(Graphics g) {
       //  super.paint(g);   // Tömmer skärmen så det flimmrar.
     }
-
-
     @Override
     public void update(Graphics g) {
         // Dubbelbufffrar skärmen så den inte flickrar.
@@ -40,7 +38,7 @@ public class gameStage extends Canvas implements MouseListener, KeyListener {
         Dimension d = size();
         offscreen = createImage(d.width, d.height);  // Skapar bilden
         offgc = offscreen.getGraphics();  // Hämtar det som är på bilden ..
-        lista.forEach((obj)->{if(obj instanceof FlyttbarSO) ((FlyttbarSO) obj).flytta(0,d.height-100);});
+        lista.forEach((obj)->{if(obj instanceof FlyttbarSO) ((FlyttbarSO) obj).relFlytta();});
         lista.forEach((obj)->obj.ritaut(offgc,this));
 //        test.ritaut(offgc,this);  // ritar ut min gubbe
         paint(offgc);  // Ritar över gamla bilden.
@@ -50,7 +48,7 @@ public class gameStage extends Canvas implements MouseListener, KeyListener {
 
 
     public void mouseEntered (MouseEvent mouseEvent) {
-        MusGubbe.flyttaObjekt(10);
+        MusGubbe.relFlytta();
     }
     public void mousePressed (MouseEvent mouseEvent) {}
     public void mouseReleased (MouseEvent mouseEvent) {}
@@ -61,18 +59,18 @@ public class gameStage extends Canvas implements MouseListener, KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            gubbe.flyttaObjekt(5);
+            gubbe.flytta(10, 0);
             System.out.println("right");
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT){
-            gubbe.flyttaObjekt(-5);
+            gubbe.flytta(-10, 0);
             System.out.println("left");
         }
         else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             System.out.println("down");
         }
         else if (e.getKeyCode() == KeyEvent.VK_UP){
-            gubbe.flyttaObjektHoppa(-5);
+            gubbe.Hoppa();
             System.out.println("up");
         }
     }

@@ -16,27 +16,42 @@ public abstract class FlyttbarSO extends SpelObjekt{
         this.gravity = gravity;
     }
 
-    void flytta(int miny,int maxy){
+    public void relFlytta(){
         if(this.gravity){
-            this.position.relY(deltaY+1);
+            System.out.println("pluss1");
+            addDelta(0,3);
         }
-        if(this.position.getY()<miny)
-            this.position.setY(miny);
-        if(this.position.getY()>maxy)
-            this.position.setY(maxy);
+        this.position.relflyttaX(this.deltaX);
+        this.position.relflyttaY(this.deltaY);
+        if(this.position.getX()>(1000-115))
+            this.position.setX((1000-115));
+        if(this.position.getX()<0)
+            this.position.setX(0);
+        if(this.position.getY()>(800-135)) {
+            this.position.setY((800 - 135));
+            resetDelta(0,0);
+        }
+        if(this.position.getY()<0)
+            this.position.setY(0);
+
+    }
+    public void showDelta(){
+        System.out.println("delta"+deltaY);
     }
 
-    void flyttaObjekt(float x){
-        this.position.relX(x);
+
+    public void addDelta(float ddx,float ddy){
+        this.deltaX+=ddx;
+        this.deltaY+=ddy;
+        // DIEEE CLAMPEN!!!!!!
+        if(Math.abs(this.deltaY)>30) {
+            this.deltaY = this.deltaY / Math.abs(this.deltaY) * 30;
+            System.out.println("clamped");
+        }
     }
-    void flyttaObjektHoppa (float y){
-        System.out.println(deltaY);
-        if (y <= 800-200) {
-            this.position.relY(deltaY++);
-        }
-        else{
-            this.position.relY(0);
-            y = 800-200;
-        }
+
+    public void resetDelta(float dx,float dy) {
+        this.deltaX = 0;
+        this.deltaY = 0;
     }
 }
