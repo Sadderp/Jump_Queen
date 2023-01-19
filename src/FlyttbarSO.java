@@ -18,7 +18,6 @@ public abstract class FlyttbarSO extends SpelObjekt{
 
     public void relFlytta(){
         if(this.gravity){
-            System.out.println("pluss1");
             addDelta(0,3);
         }
         this.position.relflyttaX(this.deltaX);
@@ -29,7 +28,7 @@ public abstract class FlyttbarSO extends SpelObjekt{
             this.position.setX(0);
         if(this.position.getY()>(800-135)) {
             this.position.setY((800 - 135));
-            resetDelta(0,0);
+            resetDelta();
         }
         if(this.position.getY()<0)
             this.position.setY(0);
@@ -46,11 +45,10 @@ public abstract class FlyttbarSO extends SpelObjekt{
         // DIEEE CLAMPEN!!!!!!
         if(Math.abs(this.deltaY)>30) {
             this.deltaY = this.deltaY / Math.abs(this.deltaY) * 30;
-            System.out.println("clamped");
         }
     }
 
-    public void resetDelta(float dx,float dy) {
+    public void resetDelta() {
         this.deltaX = 0;
         this.deltaY = 0;
     }

@@ -9,6 +9,15 @@ public class Fyrkant {
         this.width = width;
         this.height = height;
     }
+    public void setFyrkant(Fyrkant f){
+        setX(f.getX());
+        setY(f.getY());
+        setWidth(f.getWidth());
+        setHeight(f.getHeight());
+    }
+    public Fyrkant getFyrkant(){
+        return this;
+    }
 
     public int getX() {
         return position.getX();

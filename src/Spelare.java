@@ -9,7 +9,7 @@ public class Spelare extends FlyttbarSO {
         addDelta(0,-30);
     }
     void flytta(int ddx, int ddy){
-        addDelta(ddx ,ddy );
+        addDelta(ddx ,ddy);
     }
     public void  kollaOmDead(){
         if(liv<=0) {
