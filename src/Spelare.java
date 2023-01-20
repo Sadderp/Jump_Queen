@@ -11,6 +11,9 @@ public class Spelare extends FlyttbarSO {
     void flytta(int ddx, int ddy){
         addDelta(ddx ,ddy);
     }
+    void defFlytta(int x, int y){
+
+    }
     public void  kollaOmDead(){
         if(liv<=0) {
      //       kolavippen();

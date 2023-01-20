@@ -9,8 +9,10 @@ public class Game extends JFrame implements Runnable{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBackground(Color.RED);
         stage = new gameStage();
+        setSize(1000,800);
         add(stage);
         setPreferredSize(new Dimension(1000,800));
+        setResizable(false);
         show();
         pack();
         this.run();

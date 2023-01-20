@@ -5,23 +5,31 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-public class gameStage extends Canvas implements MouseListener, KeyListener {
 
+public class gameStage extends Canvas implements MouseListener, KeyListener {
+    int test = 1;
     Spelare gubbe;
     MusSpelare MusGubbe;
+    FastObjekt ParaKoopa;
     FastObjekt FastObjekt;
+    FastObjekt Goomba;
     ArrayList <SpelObjekt> lista = null;
     public gameStage() {
         lista = new ArrayList<SpelObjekt>();
         gubbe = new Spelare("mario.png",new Punkt(100,300),new Fyrkant(new Punkt(0,0),100,100));
-        MusGubbe = new MusSpelare("par.jpg",new Punkt(100,100),new Fyrkant(new Punkt(0,0),100,100));
+        MusGubbe = new MusSpelare("lakitu2.png",new Punkt(100,100),new Fyrkant(new Punkt(0,0),100,100));
+        ParaKoopa = new FastObjekt("parakoopa.png",new Punkt(500,200),new Fyrkant(new Punkt(0,0),100,100));
         FastObjekt = new FastObjekt("tegel.png",new Punkt(700,800),new Fyrkant(new Punkt(0,0),100,100));
+        Goomba = new FastObjekt("goomba.png", new Punkt(400,800), new Fyrkant(new Punkt(0,0),100,100));
         lista.add(gubbe);
         lista.add(MusGubbe);
+        lista.add(ParaKoopa);
         lista.add(FastObjekt);
+        lista.add(Goomba);
         addMouseListener(this);
         addKeyListener(this);
         setBackground(Color.GREEN);
+        setPreferredSize(new Dimension(1000,800));
     }
     @Override
     public void paint(Graphics g) {}
@@ -31,12 +39,27 @@ public class gameStage extends Canvas implements MouseListener, KeyListener {
         // Ritar till en bild sen ritar ut den nya  bilden.
         Graphics offgc;  // Temp rityta
         Image offscreen = null;  // temp bild
-        Dimension d = size();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         offscreen = createImage(d.width, d.height);  // Skapar bilden
         offgc = offscreen.getGraphics();  // Hämtar det som är på bilden ..
         lista.forEach((obj)->{if(obj instanceof FlyttbarSO) ((FlyttbarSO) obj).relFlytta();});
-        lista.forEach((obj)->{if(!(obj instanceof Spelare) && obj.collides(gubbe))
-            gubbe.resetDelta();
+        lista.forEach((obj)->{if(!(obj instanceof Spelare)) {
+            if(obj.collides(gubbe) == 1){
+                gubbe.resetDelta();
+            }
+            else if(obj.collides(gubbe) == 2){
+                gubbe.resetDelta();
+            }
+            else if(obj.collides(gubbe) == 3){
+                gubbe.resetDelta();
+            }
+            else if(obj.collides(gubbe) == 4){
+                gubbe.resetDelta();
+            }
+            else {
+                System.out.println("Test");;
+            }
+        }
         });
         lista.forEach((obj)->obj.ritaut(offgc,this));
         paint(offgc);  // Ritar över gamla bilden.
