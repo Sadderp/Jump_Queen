@@ -42,7 +42,6 @@ public abstract class FlyttbarSO extends SpelObjekt{
     public void addDelta(float ddx,float ddy){
         this.deltaX+=ddx;
         this.deltaY+=ddy;
-        // DIEEE CLAMPEN!!!!!!
         if(Math.abs(this.deltaY)>30) {
             this.deltaY = this.deltaY / Math.abs(this.deltaY) * 30;
         }

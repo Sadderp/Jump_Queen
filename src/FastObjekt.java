@@ -1,5 +1,5 @@
-public class FastObjekt extends FlyttbarSO {
+public class FastObjekt extends SpelObjekt {
     public FastObjekt(String illustration, Punkt position, Fyrkant hitbox) {
-        super(illustration, position, hitbox,false);
+        super(illustration, position, hitbox);
     }
 }
