@@ -1,9 +1,9 @@
 
 public class Spelare extends FlyttbarSO {
-    private float liv;
-    public Spelare(String illustration, Punkt position, Fyrkant hitbox) {
+    private int liv;
+    public Spelare(String illustration, Punkt position, Fyrkant hitbox, int liv) {
         super(illustration, position, hitbox,true);
-        this.liv=3;
+        this.liv=liv;
     }
     void Hoppa (){
         addDelta(0,-30);
@@ -11,12 +11,22 @@ public class Spelare extends FlyttbarSO {
     void flytta(int ddx, int ddy){
         addDelta(ddx ,ddy);
     }
-    public void  kollaOmDead(){
+    void defFlytta(int x, int y){
+        position.setX(x);
+        position.setY(y);
+    }
+
+    public void skada(){
+        this.liv--;
+        kollaOmDead();
+    }
+
+    public void kollaOmDead(){
         if(liv<=0) {
-     //       kolavippen();
+            kolavippen();
         }
     }
     public void kolavippen(){
-        System.out.println("sadad");
+        System.out.println("Du dog!");
     }
 }

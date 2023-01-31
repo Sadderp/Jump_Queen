@@ -6,13 +6,10 @@ public class Punkt {
     public void setX(float x) {
         this.x = x;
     }
-
     private float x;
-
     public int getY() {
         return Math.round(y);
     }
-
     public void setY(float y) {
         this.y = y;
     }
@@ -27,6 +24,9 @@ public class Punkt {
     Punkt(float x,float y){
         this.x=x;
         this.y=y;
+    }
+    public String toString(){
+        return this.x+" "+this.y;
     }
 
 }
