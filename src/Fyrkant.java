@@ -1,17 +1,17 @@
 public class Fyrkant {
 
-    Punkt position;
+    Punkt fyrkantPosition;
     float width;
     float height;
 
     public Fyrkant(Punkt p, float width, float height) {
-        this.position = p;
+        this.fyrkantPosition = p;
         this.width = width;
         this.height = height;
     }
     public void setFyrkant(Fyrkant f){
-        setX(f.getX());
-        setY(f.getY());
+        fyrkantSetX(f.fyrkantGetX());
+        fyrkantSetY(f.fyrkantGetY());
         setWidth(f.getWidth());
         setHeight(f.getHeight());
     }
@@ -19,20 +19,20 @@ public class Fyrkant {
         return this;
     }
 
-    public int getX() {
-        return position.getX();
+    public int fyrkantGetX() {
+        return fyrkantPosition.getX();
     }
 
-    public void setX(float x) {
-        this.position.setX(x);
+    public void fyrkantSetX(float x) {
+        this.fyrkantPosition.setX(x);
     }
 
-    public int getY() {
-        return position.getY();
+    public int fyrkantGetY() {
+        return fyrkantPosition.getY();
     }
 
-    public void setY(float y) {
-        this.position.setY(y);
+    public void fyrkantSetY(float y) {
+        this.fyrkantPosition.setY(y);
     }
 
     public int getWidth() {
