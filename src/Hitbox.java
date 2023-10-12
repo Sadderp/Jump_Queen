@@ -1,5 +1,4 @@
-public abstract class Hitbox extends Fyrkant{
-
+public class Hitbox extends Fyrkant {
     public Hitbox(Fyrkant f) {
         super(f.fyrkantPosition, f.getWidth(), f.getHeight());
     }

@@ -1,7 +1,7 @@
-import java.awt.event.KeyEvent;
+import java.awt.*;
 
-public class MusSpelare extends FlyttbarSO{
-    public MusSpelare(String illustration, Punkt position, Fyrkant hitbox) {
+public class MusSpelare extends FlyttbarSO {
+    public MusSpelare(Color illustration, Punkt position, Fyrkant hitbox) {
         super(illustration, position, hitbox,false);
     }
 }

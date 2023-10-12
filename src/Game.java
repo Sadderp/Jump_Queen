@@ -2,18 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-
-public class Game extends JFrame implements Runnable{
-    gameStage stage;
+public class Game extends JFrame implements Runnable {
+    GameStage stage;
     public Game(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setBackground(Color.RED);
-        stage = new gameStage();
-        //setSize(1000,800);
+        stage = new GameStage();
         add(stage);
-        //setPreferredSize(new Dimension(1000,800));
-        setResizable(false);
-        show();
+        setResizable(true);
+        setTitle("Jump queen");
+        setVisible(true);
         pack();
         this.run();
     }
@@ -21,7 +18,7 @@ public class Game extends JFrame implements Runnable{
     @Override
     public void run() {
         long lastTime = System.nanoTime();
-        final double ns = 1000000000.0 / 30.0;
+        final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         while(true){
             long now = System.nanoTime();

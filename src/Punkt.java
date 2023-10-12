@@ -28,6 +28,4 @@ public class Punkt {
     public String toString(){
         return this.x+" "+this.y;
     }
-
 }
-
