@@ -1,32 +1,44 @@
+import java.awt.*;
 
 public class Spelare extends FlyttbarSO {
+    //region Variables
+    private final int StartingHealth;
     private int liv;
-    public Spelare(String illustration, Punkt position, Fyrkant hitbox, int liv) {
+    private final Punkt StartPos;
+    //endregion
+
+    //region Constructors
+    public Spelare(Color illustration, Punkt position, Fyrkant hitbox, int liv) {
         super(illustration, position, hitbox,true);
         this.liv=liv;
+        this.StartingHealth = liv;
+        StartPos = position;
     }
-    void Hoppa (){
+    //endregion
+
+    //region Functions
+    void Jump(){
         addDelta(0,-30);
     }
-    void flytta(int ddx, int ddy){
+    void Move(int ddx, int ddy){
         addDelta(ddx ,ddy);
     }
-    void defFlytta(int x, int y){
+    void defMove(int x, int y){
         position.setX(x);
         position.setY(y);
     }
 
-    public void skada(){
+    public void Hurt(){
         this.liv--;
-        kollaOmDead();
+        CheckIfDead();
     }
 
-    public void kollaOmDead(){
+    public void CheckIfDead(){
         if(liv<=0) {
-            kolavippen();
+            System.out.println("You died");
+            this.defMove(StartPos.getX(), StartPos.getY());
+            liv = StartingHealth;
         }
     }
-    public void kolavippen(){
-        System.out.println("Du dog!");
-    }
+    //endregion
 }
